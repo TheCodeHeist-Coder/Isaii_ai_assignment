@@ -24,6 +24,9 @@ export const authenticate = (req: AuthRequest, res: Response, next: NextFunction
   }
 };
 
+
+
+// for the authorization
 export const authorize = (roles: string[]) => {
   return (req: AuthRequest, res: Response, next: NextFunction) => {
     if (!req.user || !roles.includes(req.user.role)) {
