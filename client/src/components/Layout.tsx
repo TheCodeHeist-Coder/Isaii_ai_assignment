@@ -89,7 +89,7 @@ const Layout: React.FC = () => {
         {/* User Profile Card at Bottom */}
         <div className="p-6 border-t border-white/5">
           <div className={`flex items-center gap-3 p-3 bg-white/5 rounded-2xl border border-white/5 transition-all ${!isSidebarOpen && 'justify-center'}`}>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-[#0F2B8C] flex items-center justify-center text-white font-bold shadow-lg">
+            <div className="w-10 h-10 rounded-xl bg-linear-to-br from-blue-500 to-[#0F2B8C] flex items-center justify-center text-white font-bold shadow-lg">
               {user?.name?.charAt(0)}
             </div>
             {isSidebarOpen && (
@@ -158,7 +158,7 @@ const Layout: React.FC = () => {
         </header>
 
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-[#F5F7FB] p-8">
-          <div className="max-w-[1600px] mx-auto">
+          <div className="max-w-400 mx-auto">
             <Outlet />
           </div>
         </main>
