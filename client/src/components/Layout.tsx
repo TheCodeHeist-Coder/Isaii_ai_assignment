@@ -9,7 +9,6 @@ import {
   LogOut,
   Menu,
   X,
-  Settings,
   Search,
   Bell,
   HelpCircle,
@@ -33,7 +32,6 @@ const Layout: React.FC = () => {
     { name: 'Employees', icon: Users, path: '/employees', roles: ['admin'] },
     { name: 'Attendance', icon: CalendarCheck, path: '/attendance', roles: ['admin', 'employee'] },
     { name: 'Leave', icon: FileText, path: '/leaves', roles: ['admin', 'employee'] },
-    { name: 'Settings', icon: Settings, path: '/settings', roles: ['admin', 'employee'] },
   ];
 
   const filteredMenuItems = menuItems.filter(item => user && item.roles.includes(user.role));

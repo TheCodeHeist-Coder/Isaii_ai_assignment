@@ -46,6 +46,7 @@ export interface Leave {
   status: 'pending' | 'approved' | 'rejected';
   leaveType: 'sick' | 'casual' | 'vacation' | 'other';
   appliedAt: string;
+  updatedAt: string;
 }
 
 export interface DashboardStats {
