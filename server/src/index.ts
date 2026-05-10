@@ -19,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/attendance', attendanceRoutes);
@@ -30,8 +31,8 @@ mongoose.connect(process.env.MONGODB_URI!)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('Could not connect to MongoDB', err));
 
-app.get('/', (req, res) => {
-  res.send('HRMS Backend API is running...');
+app.get('/ok', (req, res) => {
+  res.send('Everything is good...');
 });
 
 
