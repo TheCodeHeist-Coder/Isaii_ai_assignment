@@ -6,11 +6,9 @@ import {
   Edit2, 
   Trash2, 
   Search, 
-  Filter, 
   X, 
   ChevronLeft, 
   ChevronRight, 
-  MoreVertical,
   Briefcase,
   Users,
   CheckCircle2,
@@ -140,9 +138,9 @@ const EmployeePage: React.FC = () => {
         </button>
       </div>
 
-      <div className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-100">
+      <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
         <div className="flex flex-wrap items-center gap-4">
-          <div className="flex-1 min-w-[240px] relative group">
+          <div className="flex-1 min-w-3xl relative group">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#0F2B8C]" size={18} />
             <input
               type="text"
@@ -189,7 +187,7 @@ const EmployeePage: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-[32px] shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-4xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -208,7 +206,7 @@ const EmployeePage: React.FC = () => {
                 <tr key={emp._id} className="hover:bg-gray-50/50 transition-colors group">
                   <td className="px-8 py-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#0F2B8C] to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-blue-900/10">
+                      <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#0F2B8C] to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-blue-900/10">
                         {emp.name.split(' ').map(n => n[0]).join('')}
                       </div>
                       <div>
@@ -270,7 +268,7 @@ const EmployeePage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-[32px] shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
+        <div className="bg-white p-8 rounded-4xl shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
           <div className="flex justify-between items-start mb-6">
             <div>
               <h3 className="text-xl font-bold text-gray-900">Staffing Breakdown</h3>
@@ -311,12 +309,12 @@ const EmployeePage: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-[#0A0D14] p-8 rounded-[32px] shadow-2xl shadow-blue-900/10 text-white flex flex-col justify-between relative overflow-hidden group">
+        <div className="bg-[#0A0D14] p-8 rounded-4xl shadow-2xl shadow-blue-900/10 text-white flex flex-col justify-between relative overflow-hidden group">
           <div className="relative z-10">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h3 className="text-2xl font-bold">New Hire Welcome</h3>
-                <p className="text-gray-400 font-medium mt-2 max-w-[280px]">3 new employees are starting next Monday. Ensure onboarding kits are ready.</p>
+                <p className="text-gray-400 font-medium mt-2 max-w-70">3 new employees are starting next Monday. Ensure onboarding kits are ready.</p>
               </div>
               <div className="p-3 bg-white/10 rounded-2xl">
                 <Clock size={24} className="text-blue-400" />
@@ -335,8 +333,8 @@ const EmployeePage: React.FC = () => {
       </div>
 
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
-          <div className="bg-white rounded-[32px] shadow-2xl w-full max-w-2xl overflow-hidden border border-white animate-in zoom-in duration-300">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-100 p-4">
+          <div className="bg-white rounded-4xl shadow-2xl w-full max-w-2xl overflow-hidden border border-white animate-in zoom-in duration-300">
             <div className="p-8 border-b border-gray-50 flex justify-between items-center">
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">{currentEmployee ? 'Edit Profile' : 'Add New Employee'}</h2>
