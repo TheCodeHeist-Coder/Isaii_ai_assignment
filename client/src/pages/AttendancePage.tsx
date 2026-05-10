@@ -140,7 +140,7 @@ const AttendancePage: React.FC = () => {
             <tbody className="divide-y divide-gray-50">
               {records.map((record) => (
                 <tr key={record._id} className="hover:bg-gray-50/50 transition-colors group">
-                  <td className="px-8 py-5 text-sm font-bold text-gray-900">{(record.user as any).name}</td>
+                  <td className="px-8 py-5 text-sm font-bold text-gray-900"> {(record.user as any)?.name || 'Unknown'}</td>
                   <td className="px-6 py-5 text-sm font-semibold text-gray-600">{new Date(record.date).toLocaleDateString()}</td>
                   <td className="px-6 py-5">
                     <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide ${
