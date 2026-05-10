@@ -27,9 +27,19 @@ app.use('/api/dashboard', dashboardRoutes_1.default);
 mongoose_1.default.connect(process.env.MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('Could not connect to MongoDB', err));
-app.get('/', (req, res) => {
-    res.send('HRMS Backend API is running...');
+app.get('/ok', (req, res) => {
+    res.send('Everything is good...');
 });
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+(async () => {
+    try {
+        await mongoose_1.default.connect(process.env.MONGODB_URI)
+            .then(() => console.log('Connected to MongoDB'))
+            .catch((err) => console.error('Could not connect to MongoDB', err));
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+        });
+    }
+    catch (error) {
+        console.log(error);
+    }
+})();

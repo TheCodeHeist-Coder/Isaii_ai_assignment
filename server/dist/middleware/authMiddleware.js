@@ -20,6 +20,7 @@ const authenticate = (req, res, next) => {
     }
 };
 exports.authenticate = authenticate;
+// for the authorization
 const authorize = (roles) => {
     return (req, res, next) => {
         if (!req.user || !roles.includes(req.user.role)) {
