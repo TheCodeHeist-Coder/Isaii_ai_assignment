@@ -7,7 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import EmployeePage from './pages/EmployeePage';
 import AttendancePage from './pages/AttendancePage';
 import LeavePage from './pages/LeavePage';
-import SettingsPage from './pages/SettingsPage';
+
 import './App.css';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode, roles?: string[] }> = ({ children, roles }) => {
@@ -49,7 +49,6 @@ const AppRoutes: React.FC = () => {
         />
         <Route path="attendance" element={<AttendancePage />} />
         <Route path="leaves" element={<LeavePage />} />
-        <Route path="settings" element={<SettingsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

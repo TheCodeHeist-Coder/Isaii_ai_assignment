@@ -4,8 +4,11 @@ import { AuthRequest } from '../middleware/authMiddleware';
 
 export const markAttendance = async (req: AuthRequest, res: Response) => {
   try {
-    const { status, note, checkIn, checkOut } = req.body;
-    const userId = req.user?.id;
+    const { status, note, checkIn, checkOut, employeeId } = req.body;
+    
+    // If admin is marking, use provided employeeId. Otherwise, use logged in user's ID
+    const userId = (req.user?.role === 'admin' && employeeId) ? employeeId : req.user?.id;
+    
     const date = new Date();
     date.setHours(0, 0, 0, 0); // Start of today
 

@@ -12,8 +12,7 @@ import {
   Search,
   Bell,
   HelpCircle,
-  Briefcase,
-  Activity
+  Briefcase
 } from 'lucide-react';
 
 const Layout: React.FC = () => {
@@ -87,24 +86,6 @@ const Layout: React.FC = () => {
           ))}
         </nav>
 
-        {/* System Health / Progress Widget */}
-        {isSidebarOpen && (
-          <div className="px-8 py-6">
-            <div className="bg-white/5 rounded-3xl p-5 border border-white/5">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <Activity size={14} className="text-green-500" />
-                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">System Health</span>
-                </div>
-                <span className="text-[10px] font-extrabold text-green-500">98%</span>
-              </div>
-              <div className="w-full bg-white/10 rounded-full h-1.5">
-                <div className="bg-green-500 h-1.5 rounded-full w-[98%] shadow-[0_0_12px_rgba(34,197,94,0.6)]"></div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* User Profile Card at Bottom */}
         <div className="p-6 border-t border-white/5">
           <div className={`flex items-center gap-3 p-3 bg-white/5 rounded-2xl border border-white/5 transition-all ${!isSidebarOpen && 'justify-center'}`}>
@@ -151,7 +132,7 @@ const Layout: React.FC = () => {
               </div>
               <input
                 type="text"
-                placeholder="Search for employees..."
+                placeholder="Search..."
                 className="block w-full pl-11 pr-4 py-3 bg-gray-50 border-transparent rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[#0F2B8C]/10 focus:border-[#0F2B8C] transition-all duration-300"
               />
             </div>
