@@ -158,11 +158,20 @@ const LoginPage: React.FC = () => {
             <div className="p-2 bg-white rounded-xl shadow-sm">
               <ShieldCheck className="text-green-600 w-5 h-5" />
             </div>
-            <div>
-              <p className="text-xs font-bold text-gray-800 mb-0.5">Secure Authentication</p>
-              <p className="text-[11px] text-gray-500 leading-relaxed">
-                Protected by multi-factor authentication and 256-bit encryption. Your credentials are safe with us.
+            <div className=''>
+              <p className="text-lg  font-bold text-gray-800 mb-0.5">Demo Credentials</p>
+              <div className='flex gap-4'>
+               <p className="text-[15px] text-gray-800 leading-relaxed">
+                <span className='font-extrabold'>Admin</span> :- admin@hrms.com
               </p>
+               <p className="text-[15px] text-gray-800 leading-relaxed">
+                <span className='font-extrabold' >Employee</span> :- david.miller6@hrms.com
+              </p>
+              
+              </div>
+
+              <p className='mt-3 text-gray-800'> <span className='text-gray-900 font-extrabold'>Password</span> :-  password123</p>
+             
             </div>
           </div>
         </div>
