@@ -46,19 +46,20 @@ const Layout: React.FC = () => {
 
   return (
     <div className="flex h-screen bg-[#F5F7FB] font-sans">
+      {/* Sidebar */}
       <aside 
-        className={`bg-[#0A0D14] text-white fixed lg:static z-50 h-full flex flex-col transition-all duration-300 shadow-2xl ${
-          isSidebarOpen ? 'w-64' : 'w-0 lg:w-20 overflow-hidden'
+        className={`bg-[#1A1D29] text-white fixed lg:static z-50 h-full flex flex-col transition-all duration-300 shadow-2xl ${
+          isSidebarOpen ? 'w-72' : 'w-0 lg:w-20 overflow-hidden'
         }`}
       >
-        <div className="p-6 flex items-center gap-3">
-          <div className="bg-[#0F2B8C] p-2 rounded-xl">
+        <div className="p-8 flex items-center gap-3">
+          <div className="bg-[#0F2B8C] p-2 rounded-xl shadow-lg shadow-blue-900/20">
             <Briefcase className="text-white w-6 h-6" />
           </div>
           {isSidebarOpen && (
             <div>
               <h1 className="text-lg font-bold tracking-tight">CorporateHR</h1>
-              <p className="text-[10px] text-gray-400 font-semibold uppercase tracking-wider">Admin Console</p>
+              <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Admin Console</p>
             </div>
           )}
           <button 
@@ -69,95 +70,110 @@ const Layout: React.FC = () => {
           </button>
         </div>
 
-        <nav className="mt-6 flex-1 px-4 space-y-1">
+        <nav className="mt-4 flex-1 px-6 space-y-1">
           {filteredMenuItems.map((item) => (
             <Link
               key={item.name}
               to={item.path}
-              className={`flex items-center px-4 py-3 rounded-xl transition-all duration-200 group ${
+              className={`flex items-center px-4 py-3.5 rounded-2xl transition-all duration-300 group ${
                 isActive(item.path)
-                ? 'bg-[#0F2B8C] text-white shadow-lg shadow-blue-900/20'
+                ? 'bg-[#0F2B8C] text-white shadow-xl shadow-blue-900/30 translate-x-1'
                 : 'text-gray-400 hover:bg-white/5 hover:text-white'
               }`}
             >
-              <item.icon size={20} className={isActive(item.path) ? 'text-white' : 'text-gray-400 group-hover:text-white'} />
+              <item.icon size={20} className={isActive(item.path) ? 'text-white' : 'text-gray-400 group-hover:text-white transition-colors'} />
               {isSidebarOpen && (
-                <span className="ml-3 font-medium text-sm">{item.name}</span>
+                <span className="ml-3 font-bold text-sm tracking-tight">{item.name}</span>
               )}
             </Link>
           ))}
         </nav>
 
+        {/* System Health / Progress Widget */}
         {isSidebarOpen && (
-          <div className="px-6 py-6 border-t border-white/5">
-            <div className="bg-white/5 rounded-2xl p-4">
-              <div className="flex items-center justify-between mb-2">
+          <div className="px-8 py-6">
+            <div className="bg-white/5 rounded-3xl p-5 border border-white/5">
+              <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Activity size={14} className="text-green-500" />
-                  <span className="text-[10px] font-bold text-gray-400 uppercase">System Health</span>
+                  <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">System Health</span>
                 </div>
-                <span className="text-[10px] font-bold text-green-500">98%</span>
+                <span className="text-[10px] font-extrabold text-green-500">98%</span>
               </div>
-              <div className="w-full bg-white/10 rounded-full h-1">
-                <div className="bg-green-500 h-1 rounded-full w-[98%] shadow-[0_0_8px_rgba(34,197,94,0.4)]"></div>
+              <div className="w-full bg-white/10 rounded-full h-1.5">
+                <div className="bg-green-500 h-1.5 rounded-full w-[98%] shadow-[0_0_12px_rgba(34,197,94,0.6)]"></div>
               </div>
             </div>
           </div>
         )}
 
-        <div className="p-4 border-t border-white/5">
-          <button
-            onClick={handleLogout}
-            className="flex items-center w-full px-4 py-3 text-gray-400 hover:text-white hover:bg-red-500/10 rounded-xl transition-all duration-200 group"
-          >
-            <LogOut size={20} className="group-hover:text-red-500 transition-colors" />
-            {isSidebarOpen && <span className="ml-3 font-medium text-sm">Logout</span>}
-          </button>
+        {/* User Profile Card at Bottom */}
+        <div className="p-6 border-t border-white/5">
+          <div className={`flex items-center gap-3 p-3 bg-white/5 rounded-2xl border border-white/5 transition-all ${!isSidebarOpen && 'justify-center'}`}>
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-[#0F2B8C] flex items-center justify-center text-white font-bold shadow-lg">
+              {user?.name?.charAt(0)}
+            </div>
+            {isSidebarOpen && (
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold text-white truncate">{user?.name}</p>
+                <p className="text-[10px] font-bold text-gray-500 uppercase tracking-tight">{user?.role === 'admin' ? 'Super Admin' : 'Employee'}</p>
+              </div>
+            )}
+            {isSidebarOpen && (
+              <button 
+                onClick={handleLogout}
+                className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-all"
+                title="Logout"
+              >
+                <LogOut size={18} />
+              </button>
+            )}
+          </div>
         </div>
       </aside>
 
+      {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Top Header */}
         <header className="bg-white h-20 flex items-center justify-between px-8 border-b border-gray-100 sticky top-0 z-40">
-          <div className="flex items-center gap-4 flex-1 max-w-xl">
-            <button 
-              onClick={() => setIsSidebarOpen(true)} 
-              className={`${isSidebarOpen ? 'hidden' : 'block'} text-gray-400 hover:text-gray-600 transition-colors`}
-            >
-              <Menu size={24} />
-            </button>
+          <div className="flex items-center gap-6 flex-1 max-w-2xl">
+            <div className="flex items-center gap-4">
+              <button 
+                onClick={() => setIsSidebarOpen(true)} 
+                className={`${isSidebarOpen ? 'hidden' : 'block'} text-gray-400 hover:text-gray-600 transition-colors`}
+              >
+                <Menu size={24} />
+              </button>
+              <h2 className="text-xl font-bold text-gray-900 whitespace-nowrap hidden md:block">HRMS Portal</h2>
+            </div>
+            
             <div className="relative w-full group">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-400 group-focus-within:text-[#0F2B8C]">
                 <Search size={18} />
               </div>
               <input
                 type="text"
-                placeholder="Search employees, documents..."
-                className="block w-full pl-11 pr-4 py-2.5 bg-gray-50 border-transparent rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[#0F2B8C]/10 focus:border-[#0F2B8C] transition-all duration-200"
+                placeholder="Search for employees..."
+                className="block w-full pl-11 pr-4 py-3 bg-gray-50 border-transparent rounded-2xl text-sm focus:bg-white focus:ring-2 focus:ring-[#0F2B8C]/10 focus:border-[#0F2B8C] transition-all duration-300"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <button className="p-2.5 text-gray-400 hover:bg-gray-50 rounded-xl transition-all relative">
-                <Bell size={20} />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+          <div className="flex items-center gap-4 ml-4">
+            <div className="flex items-center gap-1">
+              <button className="p-2.5 text-gray-400 hover:bg-gray-50 rounded-2xl transition-all relative group">
+                <Bell size={20} className="group-hover:rotate-12 transition-transform" />
+                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
               </button>
-              <button className="p-2.5 text-gray-400 hover:bg-gray-50 rounded-xl transition-all">
+              <button className="p-2.5 text-gray-400 hover:bg-gray-50 rounded-2xl transition-all">
                 <HelpCircle size={20} />
               </button>
             </div>
             
-            <div className="h-8 w-px bg-gray-100 mx-1"></div>
+            <div className="h-8 w-px bg-gray-100 mx-2"></div>
 
-            <div className="flex items-center gap-3 pl-2">
-              <div className="text-right hidden sm:block">
-                <p className="text-sm font-bold text-gray-900">{user?.name}</p>
-                <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-tight">{user?.role}</p>
-              </div>
-              <div className="w-10 h-10 bg-gradient-to-br from-[#0F2B8C] to-blue-600 rounded-xl flex items-center justify-center text-white font-bold shadow-lg shadow-blue-900/20 border-2 border-white">
-                {user?.name?.charAt(0)}
-              </div>
+            <div className="w-10 h-10 bg-gray-100 rounded-2xl flex items-center justify-center text-[#0F2B8C] font-bold border-2 border-white shadow-sm overflow-hidden cursor-pointer hover:border-[#0F2B8C]/20 transition-all">
+               {user?.name?.charAt(0)}
             </div>
           </div>
         </header>

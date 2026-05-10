@@ -67,7 +67,7 @@ const DashboardPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
+        <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
           <div className="flex justify-between items-start mb-4">
             <div className="p-3 bg-blue-50 text-[#0F2B8C] rounded-2xl group-hover:bg-[#0F2B8C] group-hover:text-white transition-colors">
               <Users size={24} />
@@ -83,7 +83,7 @@ const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
+        <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
           <div className="flex justify-between items-start mb-4">
             <div className="p-3 bg-green-50 text-green-600 rounded-2xl group-hover:bg-green-600 group-hover:text-white transition-colors">
               <CalendarCheck size={24} />
@@ -98,7 +98,7 @@ const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-[24px] shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
+        <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 group hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
           <div className="flex justify-between items-start mb-4">
             <div className="p-3 bg-red-50 text-red-600 rounded-2xl group-hover:bg-red-600 group-hover:text-white transition-colors">
               <FileText size={24} />
@@ -115,7 +115,7 @@ const DashboardPage: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white p-8 rounded-[32px] shadow-sm border border-gray-100">
+        <div className="lg:col-span-2 bg-white p-8 rounded-4xl shadow-sm border border-gray-100">
           <div className="flex justify-between items-center mb-10">
             <div>
               <h3 className="text-xl font-bold text-gray-900">Attendance Overview</h3>
@@ -132,7 +132,7 @@ const DashboardPage: React.FC = () => {
                 {[1,2,3,4].map(i => <div key={i} className="w-full border-t border-gray-50"></div>)}
              </div>
              {[40, 70, 55, 90, 65, 80, 95].map((h, i) => (
-                <div key={i} className="flex-1 bg-gradient-to-t from-[#0F2B8C] to-blue-500 rounded-t-xl relative group" style={{ height: `${h}%` }}>
+                <div key={i} className="flex-1 bg-linear-to-t from-[#0F2B8C] to-blue-500 rounded-t-xl relative group" style={{ height: `${h}%` }}>
                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-[#0F2B8C] text-white text-[10px] font-bold px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
                       {h}%
                    </div>
@@ -147,7 +147,7 @@ const DashboardPage: React.FC = () => {
         </div>
         
         <div className="flex flex-col gap-6">
-          <div className="bg-[#0A0D14] p-8 rounded-[32px] shadow-2xl shadow-blue-900/10 text-white flex-1">
+          <div className="bg-[#0A0D14] p-8 rounded-4xl shadow-2xl shadow-blue-900/10 text-white flex-1">
             <h3 className="text-xl font-bold mb-6">Quick Actions</h3>
             <div className="space-y-3">
               <button className="w-full flex items-center justify-between p-4 bg-white/5 hover:bg-[#0F2B8C] rounded-2xl transition-all duration-300 group">
@@ -189,7 +189,7 @@ const DashboardPage: React.FC = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-[32px] shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-4xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="p-8 flex justify-between items-center border-b border-gray-50">
           <h3 className="text-xl font-bold text-gray-900">Recent Leave Requests</h3>
           <button className="text-sm font-bold text-[#0F2B8C] hover:underline transition-all">View All Requests</button>
